@@ -22,7 +22,8 @@ HOST=$1;
 shift $((OPTIND-0))
 
 ping_resp=$(eval nmap -sn $HOST | grep up 2>/dev/null)
-echo $ping_resp
+#echo $ping_resp
+
 if [ "$ping_resp" = "" ]; then
 	echo "Host seems down by PING"
 else
@@ -34,9 +35,6 @@ echo
 
 for port in  "$@" ; do
 
-#	echo $i
-#	port=$(@[i])
-#	echo $port
 	if [ `echo $port | cut -c1` = "u" ]; then
 
 		port=`echo $port | cut -d"u" -f2`
