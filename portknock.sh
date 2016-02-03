@@ -39,10 +39,10 @@ for port in  "$@" ; do
 
 		port=`echo $port | cut -d"u" -f2`
 		echo "Knockin' on UDP $port"
-		nmap  -Pn -sU $HOST --host_timeout 201 --max-retries 0 -p $port>/dev/null
+		nmap  -Pn -sU $HOST --host_timeout 201 --max-retries 0 -p $port 2>/dev/null 1>&2
 	else
 		echo "Knockin' on TCP $port"
-		nmap  -Pn -sS $HOST --host_timeout 201 --max-retries 0 -p $port>/dev/null
+		nmap  -Pn -sS $HOST --host_timeout 201 --max-retries 0 -p $port 2>/dev/null 1>&2
 	fi
 done
 
